@@ -14,6 +14,7 @@ cmake .. -G"Ninja" %CMAKE_ARGS% ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -DFMT_TEST=ON ^
       -DFMT_DOC=OFF ^
+      -DBUILD_SHARED_LIBS=TRUE ^
       -DFMT_INSTALL=ON ^
       -DCMAKE_BUILD_TYPE=Release
 
