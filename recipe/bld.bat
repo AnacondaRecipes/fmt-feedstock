@@ -1,17 +1,36 @@
+:: cmd
 
-cmake -G"NMake Makefiles" ^
-  -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" ^
-  -DCMAKE_PREFIX_PATH:PATH="%LIBRARY_PREFIX%" ^
-  -DCMAKE_BUILD_TYPE:STRING=Release ^
-  -DBUILD_SHARED_LIBS:BOOL=TRUE ^
-  -DFMT_TEST:BOOL=OFF ^
-  -DFMT_DOC:BOOL=OFF ^
-  -DFMT_INSTALL:BOOL=ON ^
-  .
+
+:: Isolate the build.
+mkdir Build
+cd Build
 if errorlevel 1 exit 1
 
-nmake
+
+:: Generate the build files.
+cmake .. -G"Ninja" %CMAKE_ARGS% ^
+      -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
+      -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+      -DFMT_TEST=OFF ^
+      -DFMT_DOC=OFF ^
+      -DFMT_INSTALL=ON ^
+      -DCMAKE_BUILD_TYPE=Release
+
+
+:: Build.
+ninja
 if errorlevel 1 exit 1
 
-nmake install
+
+:: Perforem tests.
+ninja test
 if errorlevel 1 exit 1
+
+
+:: Build and install.
+ninja install
+if errorlevel 1 exit 1
+
+
+:: Error free exit.
+exit 0
