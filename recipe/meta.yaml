@@ -1,7 +1,7 @@
 {% set name = "fmt" %}
-{% set version = "8.1.1" %}
-{% set sha256 = "3d794d3cf67633b34b2771eb9f073bde87e846e0d395d254df7b211ef1ec7346" %}
-{% set build_number = "1" %}
+{% set version = "9.1.0" %}
+{% set sha256 = "5dea48d1fcddc3ec571ce2058e13910a0d4a6bab4cc09a809d8b1dd1c88ae6f2" %}
+{% set build_number = "0" %}
 
 package:
   name: {{ name|lower }}
