@@ -8,7 +8,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/fmtlib/fmt/archive/{{ version }}.tar.gz
+  url: https://github.com/fmtlib/{{ name }}/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -25,16 +25,16 @@ requirements:
 
 test:
   commands:
-    - test -d ${PREFIX}/include/fmt  # [unix]
-    - test -f ${PREFIX}/include/fmt/core.h  # [unix]
-    - test -f ${PREFIX}/include/fmt/format.h  # [unix]
+    - test -d ${PREFIX}/include/fmt                     # [unix]
+    - test -f ${PREFIX}/include/fmt/core.h              # [unix]
+    - test -f ${PREFIX}/include/fmt/format.h            # [unix]
     - test -f ${PREFIX}/lib/cmake/fmt/fmt-config.cmake  # [unix]
-    - test -f ${PREFIX}/lib/libfmt.so  # [linux]
-    - test -f ${PREFIX}/lib/libfmt.dylib  # [osx]
-    - if exist %LIBRARY_PREFIX%\include\fmt\core.h (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\include\fmt\format.h (exit 0) else (exit 1)  # [win]
+    - test -f ${PREFIX}/lib/libfmt.so                   # [linux]
+    - test -f ${PREFIX}/lib/libfmt.dylib                # [osx]
+    - if exist %LIBRARY_PREFIX%\include\fmt\core.h (exit 0) else (exit 1)          # [win]
+    - if exist %LIBRARY_PREFIX%\include\fmt\format.h (exit 0) else (exit 1)        # [win]
     - if exist %LIBRARY_PREFIX%\lib\cmake\fmt-config.cmake (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\bin\fmt.dll (exit 0) else (exit 1)  # [win]
+    - if exist %LIBRARY_PREFIX%\bin\fmt.dll (exit 0) else (exit 1)                 # [win]
 
 about:
   home: https://fmt.dev/latest/
@@ -47,7 +47,6 @@ about:
     It can be used as a safe and fast alternative to (s)printf and iostreams.
   dev_url: https://github.com/fmtlib/fmt
   doc_url: https://fmt.dev/latest/
-  doc_src_url: https://github.com/fmtlib/fmt/tree/master/doc
 
 extra:
   recipe-maintainers:

@@ -1,9 +1,10 @@
 #!/bin/bash
+echo "Building ${PKG_NAME}."
 
 
 # Isolate the build.
-mkdir -p Build
-cd Build || exit 1
+mkdir -p Build-${PKG_NAME}
+cd Build-${PKG_NAME} || exit 1
 
 
 # Generate the build files.
@@ -11,12 +12,12 @@ echo "Generating the build files."
 cmake .. -G"Ninja" ${CMAKE_ARGS} \
       -DCMAKE_PREFIX_PATH=$PREFIX \
       -DCMAKE_INSTALL_PREFIX=$PREFIX \
+      -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DBUILD_SHARED_LIBS=TRUE \
       -DFMT_TEST=ON \
       -DFMT_DOC=OFF \
-      -DFMT_INSTALL=ON \
-      -DCMAKE_BUILD_TYPE=Release
+      -DFMT_INSTALL=ON
 
 
 # Build.
