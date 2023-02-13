@@ -1,14 +1,14 @@
 {% set name = "fmt" %}
-{% set version = "8.1.1" %}
-{% set sha256 = "3d794d3cf67633b34b2771eb9f073bde87e846e0d395d254df7b211ef1ec7346" %}
-{% set build_number = "1" %}
+{% set version = "9.1.0" %}
+{% set sha256 = "5dea48d1fcddc3ec571ce2058e13910a0d4a6bab4cc09a809d8b1dd1c88ae6f2" %}
+{% set build_number = "0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/fmtlib/fmt/archive/{{ version }}.tar.gz
+  url: https://github.com/fmtlib/{{ name }}/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -25,16 +25,16 @@ requirements:
 
 test:
   commands:
-    - test -d ${PREFIX}/include/fmt  # [unix]
-    - test -f ${PREFIX}/include/fmt/core.h  # [unix]
-    - test -f ${PREFIX}/include/fmt/format.h  # [unix]
+    - test -d ${PREFIX}/include/fmt                     # [unix]
+    - test -f ${PREFIX}/include/fmt/core.h              # [unix]
+    - test -f ${PREFIX}/include/fmt/format.h            # [unix]
     - test -f ${PREFIX}/lib/cmake/fmt/fmt-config.cmake  # [unix]
-    - test -f ${PREFIX}/lib/libfmt.so  # [linux]
-    - test -f ${PREFIX}/lib/libfmt.dylib  # [osx]
-    - if exist %LIBRARY_PREFIX%\include\fmt\core.h (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\include\fmt\format.h (exit 0) else (exit 1)  # [win]
+    - test -f ${PREFIX}/lib/libfmt.so                   # [linux]
+    - test -f ${PREFIX}/lib/libfmt.dylib                # [osx]
+    - if exist %LIBRARY_PREFIX%\include\fmt\core.h (exit 0) else (exit 1)          # [win]
+    - if exist %LIBRARY_PREFIX%\include\fmt\format.h (exit 0) else (exit 1)        # [win]
     - if exist %LIBRARY_PREFIX%\lib\cmake\fmt-config.cmake (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_PREFIX%\bin\fmt.dll (exit 0) else (exit 1)  # [win]
+    - if exist %LIBRARY_PREFIX%\bin\fmt.dll (exit 0) else (exit 1)                 # [win]
 
 about:
   home: https://fmt.dev/latest/
@@ -47,7 +47,6 @@ about:
     It can be used as a safe and fast alternative to (s)printf and iostreams.
   dev_url: https://github.com/fmtlib/fmt
   doc_url: https://fmt.dev/latest/
-  doc_src_url: https://github.com/fmtlib/fmt/tree/master/doc
 
 extra:
   recipe-maintainers:
