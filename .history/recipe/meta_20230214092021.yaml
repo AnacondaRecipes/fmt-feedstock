@@ -13,7 +13,6 @@ source:
 
 build:
   number: {{ build_number }}
-  # Trigger 1
   skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage('fmt', max_pin='x') }}
