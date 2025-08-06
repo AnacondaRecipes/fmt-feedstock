@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/fmtlib/{{ name }}/archive/{{ version }}.tar.gz
   sha256: bc23066d87ab3168f27cef3e97d545fa63314f5c79df5ea444d41d56f962c6af
+  patches:
+    - disable-isnan-test.patch  # [osx-arm64]
 
 build:
   number: 0
