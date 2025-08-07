@@ -23,7 +23,6 @@ requirements:
     - {{ stdlib('c') }}
     - cmake
     - ninja
-    - patch  # [osx-arm64]
 
 test:
   commands:
