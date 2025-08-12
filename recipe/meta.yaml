@@ -1,7 +1,5 @@
 {% set name = "fmt" %}
-{% set version = "9.1.0" %}
-{% set sha256 = "5dea48d1fcddc3ec571ce2058e13910a0d4a6bab4cc09a809d8b1dd1c88ae6f2" %}
-{% set build_number = 1 %}
+{% set version = "11.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -9,11 +7,12 @@ package:
 
 source:
   url: https://github.com/fmtlib/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: bc23066d87ab3168f27cef3e97d545fa63314f5c79df5ea444d41d56f962c6af
+  patches:
+    - disable-isnan-test.patch  # [osx-arm64]
 
 build:
-  number: {{ build_number }}
-  # Trigger 1
+  number: 0
   skip: true  # [win and vc<14]
   run_exports:
     - {{ pin_subpackage('fmt', max_pin='x') }}
@@ -21,8 +20,9 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - cmake
-    - ninja
+    - ninja-base
 
 test:
   commands:
@@ -41,7 +41,7 @@ about:
   home: https://fmt.dev/latest/
   license: MIT
   license_family: MIT
-  license_file: LICENSE.rst
+  license_file: LICENSE
   summary: '{fmt} is an open-source formatting library for C++'
   description: |
     {fmt} is an open-source formatting library for C++.
