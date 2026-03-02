@@ -1,5 +1,5 @@
 {% set name = "fmt" %}
-{% set version = "11.2.0" %}
+{% set version = "12.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/fmtlib/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: bc23066d87ab3168f27cef3e97d545fa63314f5c79df5ea444d41d56f962c6af
+  sha256: ea7de4299689e12b6dddd392f9896f08fb0777ac7168897a244a6d6085043fea
   patches:
     - disable-isnan-test.patch  # [osx-arm64]
 
@@ -38,7 +38,7 @@ test:
     - if exist %LIBRARY_PREFIX%\bin\fmt.dll (exit 0) else (exit 1)                 # [win]
 
 about:
-  home: https://fmt.dev/latest/
+  home: https://fmt.dev/latest
   license: MIT
   license_family: MIT
   license_file: LICENSE
@@ -47,7 +47,7 @@ about:
     {fmt} is an open-source formatting library for C++.
     It can be used as a safe and fast alternative to (s)printf and iostreams.
   dev_url: https://github.com/fmtlib/fmt
-  doc_url: https://fmt.dev/latest/
+  doc_url: https://fmt.dev/latest
 
 extra:
   recipe-maintainers:
