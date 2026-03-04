@@ -30,8 +30,7 @@ test:
     - test -f ${PREFIX}/include/fmt/core.h              # [unix]
     - test -f ${PREFIX}/include/fmt/format.h            # [unix]
     - test -f ${PREFIX}/lib/cmake/fmt/fmt-config.cmake  # [unix]
-    - test -f ${PREFIX}/lib/libfmt.so                   # [linux]
-    - test -f ${PREFIX}/lib/libfmt.dylib                # [osx]
+    - test -f ${PREFIX}/lib/libfmt${SHLIB_EXT}          # [unix]
     - if exist %LIBRARY_PREFIX%\include\fmt\core.h (exit 0) else (exit 1)          # [win]
     - if exist %LIBRARY_PREFIX%\include\fmt\format.h (exit 0) else (exit 1)        # [win]
     - if exist %LIBRARY_PREFIX%\lib\cmake\fmt-config.cmake (exit 0) else (exit 1)  # [win]
@@ -42,9 +41,9 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: '{fmt} is an open-source formatting library for C++'
+  summary: fmt is an open-source formatting library for C++
   description: |
-    {fmt} is an open-source formatting library for C++.
+    fmt is an open-source formatting library for C++.
     It can be used as a safe and fast alternative to (s)printf and iostreams.
   dev_url: https://github.com/fmtlib/fmt
   doc_url: https://fmt.dev/latest
